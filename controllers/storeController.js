@@ -28,6 +28,10 @@ exports.editStore = async (req, res) => {
 }
 
 exports.updateStore = async (req, res) => {
+  // Set the location data as a Point
+  // This fixes a bug where it loses this value when a store gets updated, causing issues with searching by location...
+  req.body.location.type = 'Point'
+
   const store = await Store.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true, // Return the new store instead of the old one
     runValidators: true // Ensure checking of the 'required' fields specified in our model (Store.js)
