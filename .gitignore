@@ -63,4 +63,4 @@ typings/
 ###
 .DS_Store
 Learn-Node-master/
-public/
+public/dist
